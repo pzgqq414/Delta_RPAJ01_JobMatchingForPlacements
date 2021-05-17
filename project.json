@@ -6,7 +6,8 @@
     "UiPath.Excel.Activities": "[2.10.2-preview]",
     "UiPath.Mail.Activities": "[1.10.2-preview]",
     "UiPath.System.Activities": "[21.2.1-preview]",
-    "UiPath.UIAutomation.Activities": "[21.2.0-preview]"
+    "UiPath.UIAutomation.Activities": "[21.2.0-preview]",
+    "UiPath.Word.Activities": "[1.6.4]"
   },
   "webServices": [],
   "entitiesStores": [],
@@ -42,8 +43,14 @@
   "expressionLanguage": "VisualBasic",
   "entryPoints": [
     {
+      "filePath": "ExtractCVs.xaml",
+      "uniqueId": "213ba1e1-1c5f-4974-bb99-831ba42d3a80",
+      "input": [],
+      "output": []
+    },
+    {
       "filePath": "Main.xaml",
-      "uniqueId": "bdad2a03-3eed-497d-9e30-9484f45d5bd7",
+      "uniqueId": "aa5faf36-a332-4599-aa68-593137d1aa68",
       "input": [],
       "output": []
     }
