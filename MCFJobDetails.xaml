@@ -1,6 +1,6 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="MCFJobDetails" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1146,1341" sap2010:WorkflowViewState.IdRef="MCFJobDetails_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="MCFJobDetails" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1146,3783" sap2010:WorkflowViewState.IdRef="MCFJobDetails_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
-    <sco:Collection x:TypeArguments="x:String">
+    <scg:List x:TypeArguments="x:String" Capacity="29">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -30,10 +30,10 @@
       <x:String>System.Xml.Serialization</x:String>
       <x:String>UiPath.Excel</x:String>
       <x:String>UiPath.Excel.Activities</x:String>
-    </sco:Collection>
+    </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <sco:Collection x:TypeArguments="AssemblyReference">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="22">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -55,82 +55,246 @@
       <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Excel</AssemblyReference>
-    </sco:Collection>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+    </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="MCFJobDetails" sap:VirtualizedContainerService.HintSize="670,1176" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="MCFJobDetails" sap:VirtualizedContainerService.HintSize="697,3618" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="sd:DataTable" Default="[New System.Data.DataTable]" Name="ExtractDataTable" />
+      <Variable x:TypeArguments="x:Int32" Name="jobNo">
+        <Variable.Default>
+          <Literal x:TypeArguments="x:Int32" Value="20" />
+        </Variable.Default>
+      </Variable>
+      <Variable x:TypeArguments="x:Int32" Name="count" />
+      <Variable x:TypeArguments="x:String" Name="jobsCriteria" />
+      <Variable x:TypeArguments="x:String" Name="jobCell" />
+      <Variable x:TypeArguments="x:String" Name="jobURL" />
+      <Variable x:TypeArguments="x:String" Name="URLCell" />
+    </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:OpenBrowser CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Open Browser" sap:VirtualizedContainerService.HintSize="628,1084" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" Url="https://www.mycareersfuture.gov.sg/search?sortBy=new_posting_date&amp;page=0">
+    <ui:OpenBrowser CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Open Browser in MyCareersFuture" sap:VirtualizedContainerService.HintSize="655,1481" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" Url="https://www.mycareersfuture.gov.sg">
       <ui:OpenBrowser.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="594,983" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="518,1380" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <Sequence DisplayName="Data Scraping" sap:VirtualizedContainerService.HintSize="552,891" sap2010:WorkflowViewState.IdRef="Sequence_7">
-              <Sequence.Variables>
-                <Variable x:TypeArguments="sd:DataTable" Default="[New System.Data.DataTable]" Name="ExtractDataTable" />
-              </Sequence.Variables>
+            <ui:Click AlterIfDisabled="{x:Null}" CursorMotionType="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click search-button" sap:VirtualizedContainerService.HintSize="476,106" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT">
+              <ui:Click.CursorPosition>
+                <ui:CursorPosition Position="Center">
+                  <ui:CursorPosition.OffsetX>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:CursorPosition.OffsetX>
+                  <ui:CursorPosition.OffsetY>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:CursorPosition.OffsetY>
+                </ui:CursorPosition>
+              </ui:Click.CursorPosition>
+              <ui:Click.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="9e496089-f2fe-4950-a8b3-a7177da7b07a" InformativeScreenshot="a413652053da670976d14fb170172694" Selector="&lt;webctrl id='search-button' tag='BUTTON' /&gt;" TimeoutMS="2000">
+                  <ui:Target.WaitForReady>
+                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                  </ui:Target.WaitForReady>
+                </ui:Target>
+              </ui:Click.Target>
+            </ui:Click>
+            <Sequence DisplayName="Data Scraping" sap:VirtualizedContainerService.HintSize="476,1080" sap2010:WorkflowViewState.IdRef="Sequence_13">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser 'Searchres Page'" sap:VirtualizedContainerService.HintSize="510,799" sap2010:WorkflowViewState.IdRef="BrowserScope_2" InformativeScreenshot="ab5c94fde469dfd9348ac75f5bc7a38d" Selector="&lt;html app='chrome.exe' title='Search results | MyCareersFuture Singapore' /&gt;">
+              <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser - to extract basic job info" sap:VirtualizedContainerService.HintSize="434,344" sap2010:WorkflowViewState.IdRef="BrowserScope_5" InformativeScreenshot="17516c71f747fd3aefd5a7e8f51b0986" Selector="&lt;html app='chrome.exe' title='Search results | MyCareersFuture Singapore' /&gt;">
                 <ui:BrowserScope.Body>
                   <ActivityAction x:TypeArguments="x:Object">
                     <ActivityAction.Argument>
                       <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
                     </ActivityAction.Argument>
-                    <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="476,653" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                    <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,198" sap2010:WorkflowViewState.IdRef="Sequence_12">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <ui:ExtractData DelayBetweenPagesMS="{x:Null}" ContinueOnError="True" DataTable="[ExtractDataTable]" DisplayName="Extract Structured Data 'SECTION  search-results'" ExtractMetadata="&lt;extract&gt;&lt;row exact='1'&gt;&lt;webctrl tag='div' idx='3' /&gt;&lt;webctrl tag='div' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='a' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='section' idx='1' /&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;/row&gt;&lt;column exact='1' name='Job Title' attr='text'&gt;&lt;webctrl tag='div' idx='3' /&gt;&lt;webctrl tag='div' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='a' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='section' idx='1' /&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='span' idx='1' /&gt;&lt;/column&gt;&lt;column exact='1' name='Organisation' attr='text' name2='Job URL' attr2='href'&gt;&lt;webctrl tag='div' idx='3' /&gt;&lt;webctrl tag='div' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='a' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='section' idx='1' /&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;webctrl tag='p' idx='1' /&gt;&lt;/column&gt;&lt;/extract&gt;" sap:VirtualizedContainerService.HintSize="434,106" sap2010:WorkflowViewState.IdRef="ExtractData_2" MaxNumberOfResults="0" NextLinkSelector="&lt;webctrl aaname='❯' tag='SPAN' type='action' /&gt;" SimulateClick="True">
+                      <ui:ExtractData DelayBetweenPagesMS="{x:Null}" ContinueOnError="True" DataTable="[ExtractDataTable]" DisplayName="Extract Structured Data 'SECTION  search-results'" ExtractMetadata="&lt;extract&gt;&lt;row exact='1'&gt;&lt;webctrl tag='div' idx='3' /&gt;&lt;webctrl tag='div' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='a' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;/row&gt;&lt;column exact='1' name='Job Title' attr='text'&gt;&lt;webctrl tag='div' idx='3' /&gt;&lt;webctrl tag='div' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='a' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='section' idx='1' /&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='span' idx='1' /&gt;&lt;/column&gt;&lt;column exact='1' name='Organisation' attr='text' name2='Job URL' attr2='href'&gt;&lt;webctrl tag='div' idx='3' /&gt;&lt;webctrl tag='div' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='a' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='section' idx='1' /&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;webctrl tag='p' idx='1' /&gt;&lt;/column&gt;&lt;column exact='1' name='Post Date' attr='text'&gt;&lt;webctrl tag='div' idx='3' /&gt;&lt;webctrl tag='div' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='a' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='4' /&gt;&lt;webctrl tag='section' idx='2' /&gt;&lt;webctrl tag='span' idx='1' /&gt;&lt;/column&gt;&lt;/extract&gt;" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="ExtractData_5" MaxNumberOfResults="[jobNo]" NextLinkSelector="&lt;webctrl aaname='❯' tag='SPAN' type='action' /&gt;" SimulateClick="True">
                         <ui:ExtractData.Target>
-                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="d5bf586f-2f26-49ac-a11e-32b8a7ded8f7" InformativeScreenshot="ae93564f7a43d3f765ed8d95b78b41c7" Selector="&lt;webctrl id='search-results' tag='SECTION' /&gt;" WaitForReady="COMPLETE">
+                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="44080953-2c41-4f31-a1bd-49f3fbde986e" InformativeScreenshot="3004a9660ec5744f6b37291292478e98" Selector="&lt;webctrl id='search-results' tag='SECTION' /&gt;" WaitForReady="COMPLETE">
                             <ui:Target.TimeoutMS>
                               <InArgument x:TypeArguments="x:Int32" />
                             </ui:Target.TimeoutMS>
                           </ui:Target>
                         </ui:ExtractData.Target>
                       </ui:ExtractData>
-                      <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="434,415" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="Jobs/MCFJobs.xlsx">
-                        <ui:ExcelApplicationScope.Body>
-                          <ActivityAction x:TypeArguments="ui:WorkbookApplication">
-                            <ActivityAction.Argument>
-                              <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
-                            </ActivityAction.Argument>
-                            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,306" sap2010:WorkflowViewState.IdRef="Sequence_3">
-                              <sap:WorkflowViewStateService.ViewState>
-                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                </scg:Dictionary>
-                              </sap:WorkflowViewStateService.ViewState>
-                              <ui:InvokeVBA OutputValue="{x:Null}" CodeFilePath="clearexcel.txt" DisplayName="Invoke VBA" EntryMethodName="Main" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="InvokeVBA_1" />
-                              <ui:ExcelWriteRange AddHeaders="True" DataTable="[ExtractDataTable]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_1" SheetName="Sheet1" StartingCell="A1" />
-                            </Sequence>
-                          </ActivityAction>
-                        </ui:ExcelApplicationScope.Body>
-                      </ui:ExcelApplicationScope>
                     </Sequence>
                   </ActivityAction>
                 </ui:BrowserScope.Body>
               </ui:BrowserScope>
+              <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope - put extract job info into Excel" sap:VirtualizedContainerService.HintSize="434,604" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="Jobs/MCFJobs.xlsx">
+                <ui:ExcelApplicationScope.Body>
+                  <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+                    <ActivityAction.Argument>
+                      <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+                    </ActivityAction.Argument>
+                    <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,495" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ui:InvokeVBA OutputValue="{x:Null}" CodeFilePath="clearexcel.txt" DisplayName="Invoke VBA" EntryMethodName="Main" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="InvokeVBA_1" />
+                      <ui:ExcelWriteRange AddHeaders="True" DataTable="[ExtractDataTable]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_1" SheetName="Sheet1" StartingCell="A1" />
+                      <ui:ExcelWriteCell Cell="E1" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_2" SheetName="Sheet1" Text="Job Description" />
+                      <ui:ExcelSaveWorkbook DisplayName="Save Workbook" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="ExcelSaveWorkbook_1" />
+                    </Sequence>
+                  </ActivityAction>
+                </ui:ExcelApplicationScope.Body>
+              </ui:ExcelApplicationScope>
             </Sequence>
+            <ui:CloseTab Browser="{x:Null}" DisplayName="Close Tab" sap:VirtualizedContainerService.HintSize="476,22" sap2010:WorkflowViewState.IdRef="CloseTab_3" />
           </Sequence>
         </ActivityAction>
       </ui:OpenBrowser.Body>
     </ui:OpenBrowser>
+    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope - Use job's URL to extract job description and put into Excel" sap:VirtualizedContainerService.HintSize="655,2005" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_2" InstanceCachePeriod="3000" WorkbookPath="Jobs\MCFJobs.xlsx">
+      <ui:ExcelApplicationScope.Body>
+        <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="621,1896" sap2010:WorkflowViewState.IdRef="Sequence_16">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Assign sap:VirtualizedContainerService.HintSize="579,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:Int32">[count]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:Int32">2</InArgument>
+              </Assign.Value>
+            </Assign>
+            <If Condition="[count &lt;= jobNo]" DisplayName="If - based on predetermined job number to stop the program" sap:VirtualizedContainerService.HintSize="579,1704" sap2010:WorkflowViewState.IdRef="If_1">
+              <If.Then>
+                <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[ExtractDataTable]" DisplayName="For Each Row in Data Table - Run through all job URL" sap:VirtualizedContainerService.HintSize="543,1528" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+                  <ui:ForEachRow.Body>
+                    <ActivityAction x:TypeArguments="sd:DataRow">
+                      <ActivityAction.Argument>
+                        <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
+                      </ActivityAction.Argument>
+                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="509,1409" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Assign DisplayName="Assign - Convert URL to variable" sap:VirtualizedContainerService.HintSize="467,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:String">[URLCell]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:String">["C" + count.ToString]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <ui:ExcelReadCell Cell="[URLCell]" DisplayName="Read Cell" sap:VirtualizedContainerService.HintSize="467,59" sap2010:WorkflowViewState.IdRef="ExcelReadCell_1" SheetName="Sheet1">
+                          <ui:ExcelReadCell.Result>
+                            <OutArgument x:TypeArguments="x:String">[jobURL]</OutArgument>
+                          </ui:ExcelReadCell.Result>
+                        </ui:ExcelReadCell>
+                        <ui:OpenBrowser CommunicationMethod="{x:Null}" Hidden="{x:Null}" Private="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Open Browser - open job page" sap:VirtualizedContainerService.HintSize="467,1118" sap2010:WorkflowViewState.IdRef="OpenBrowser_2" NewSession="False" Url="https://www.mycareersfuture.gov.sg">
+                          <ui:OpenBrowser.Body>
+                            <ActivityAction x:TypeArguments="x:Object">
+                              <ActivityAction.Argument>
+                                <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+                              </ActivityAction.Argument>
+                              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,1017" sap2010:WorkflowViewState.IdRef="Sequence_18">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <ui:TypeInto Activate="{x:Null}" AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickBeforeTyping="True" DisplayName="Type Into - Job URL" EmptyField="True" sap:VirtualizedContainerService.HintSize="334,134" sap2010:WorkflowViewState.IdRef="TypeInto_1" SimulateType="True" Text="[&quot;https://www.mycareersfuture.gov.sg&quot;+jobURL]">
+                                  <ui:TypeInto.Target>
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="5c9b8a9e-41fa-4cff-a8b7-fa76d0b762bc" InformativeScreenshot="b0673b7a1dbcad6a11235965ce5e354b" Selector="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='MyCareersFuture Singapore | Find jobs in Singapore that match yo*' /&gt;&lt;ctrl name='MyCareersFuture Singapore | Find jobs in Singapore that match yo*' role='pane' /&gt;&lt;ctrl name='Google Chrome' role='pane' /&gt;&lt;ctrl name='Address and search bar' role='editable text' /&gt;">
+                                      <ui:Target.TimeoutMS>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:Target.TimeoutMS>
+                                      <ui:Target.WaitForReady>
+                                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                                      </ui:Target.WaitForReady>
+                                    </ui:Target>
+                                  </ui:TypeInto.Target>
+                                </ui:TypeInto>
+                                <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey - Enter" sap:VirtualizedContainerService.HintSize="334,154" sap2010:WorkflowViewState.IdRef="SendHotkey_1" Key="enter" KeyModifiers="None" SpecialKey="True">
+                                  <ui:SendHotkey.Target>
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="7556f6fd-945f-42a9-a9ed-21d91fa337d8" InformativeScreenshot="62a700266c633a02f2d5e9bc5202471f" Selector="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='MyCareersFuture Singapore | Find jobs in Singapore that match yo*' /&gt;&lt;ctrl name='MyCareersFuture Singapore | Find jobs in Singapore that match yo*' role='pane' /&gt;&lt;ctrl name='Google Chrome' role='pane' /&gt;&lt;ctrl name='Address and search bar' role='editable text' /&gt;">
+                                      <ui:Target.TimeoutMS>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:Target.TimeoutMS>
+                                      <ui:Target.WaitForReady>
+                                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                                      </ui:Target.WaitForReady>
+                                    </ui:Target>
+                                  </ui:SendHotkey.Target>
+                                </ui:SendHotkey>
+                                <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text - Extract job description" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="GetValue_1">
+                                  <ui:GetValue.Target>
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="781bc04c-5cf2-49af-9096-3a6893e9cb33" InformativeScreenshot="4eaec3e3eebdf308b2869a0bbf8b3b52" Selector="&lt;html app='chrome.exe' title='* Jobs Singapore | MyCareersFuture Singapore' /&gt;&lt;webctrl id='job_description' tag='DIV' /&gt;">
+                                      <ui:Target.TimeoutMS>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:Target.TimeoutMS>
+                                      <ui:Target.WaitForReady>
+                                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                                      </ui:Target.WaitForReady>
+                                    </ui:Target>
+                                  </ui:GetValue.Target>
+                                  <ui:GetValue.Value>
+                                    <OutArgument x:TypeArguments="x:String">[jobsCriteria]</OutArgument>
+                                  </ui:GetValue.Value>
+                                </ui:GetValue>
+                                <Assign DisplayName="Assign - Convert Excel cell to variable" sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:String">[jobCell]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:String">["E" + count.ToString]</InArgument>
+                                  </Assign.Value>
+                                </Assign>
+                                <ui:ExcelWriteCell Cell="[jobCell]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_1" SheetName="Sheet1" Text="[jobsCriteria]" />
+                                <Assign DisplayName="Assign - Increase number for looping" sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_4">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:Int32">[count]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:Int32">[count + 1]</InArgument>
+                                  </Assign.Value>
+                                </Assign>
+                                <ui:ExcelSaveWorkbook DisplayName="Save Workbook" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="ExcelSaveWorkbook_2" />
+                                <ui:CloseTab Browser="{x:Null}" DisplayName="Close Tab" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="CloseTab_2" />
+                              </Sequence>
+                            </ActivityAction>
+                          </ui:OpenBrowser.Body>
+                        </ui:OpenBrowser>
+                      </Sequence>
+                    </ActivityAction>
+                  </ui:ForEachRow.Body>
+                </ui:ForEachRow>
+              </If.Then>
+            </If>
+          </Sequence>
+        </ActivityAction>
+      </ui:ExcelApplicationScope.Body>
+    </ui:ExcelApplicationScope>
   </Sequence>
 </Activity>
