@@ -8,7 +8,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>763.666666666667,4521.66666666667</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>937.333333333333,4691.66666666667</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="34">
@@ -84,7 +84,7 @@
       <AssemblyReference>UiPath.PDF.Activities</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="ExtractCvs" sap:VirtualizedContainerService.HintSize="773.666666666667,4356.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="ExtractCvs" sap:VirtualizedContainerService.HintSize="947.333333333333,4526.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="CVStringDoc" />
       <Variable x:TypeArguments="x:Int32" Default="1" Name="counter" />
@@ -104,7 +104,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_ConfigDT]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="731.666666666667,401" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_ConfigDT]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="905.333333333333,401" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
@@ -125,20 +125,20 @@
         </ActivityAction>
       </ui:ForEachRow.Body>
     </ui:ForEachRow>
-    <ui:BuildDataTable DataTable="[out_CVsDT]" DisplayName="Build Data Table - CVsDT" sap:VirtualizedContainerService.HintSize="731.666666666667,59" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xD;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xD;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xD;&#xA;      &lt;xs:complexType&gt;&#xD;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xD;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xD;&#xA;            &lt;xs:complexType&gt;&#xD;&#xA;              &lt;xs:sequence&gt;&#xD;&#xA;                &lt;xs:element name=&quot;matchCVKeywords_col&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xD;&#xA;                  &lt;xs:simpleType&gt;&#xD;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xD;&#xA;                      &lt;xs:maxLength value=&quot;1000&quot; /&gt;&#xD;&#xA;                    &lt;/xs:restriction&gt;&#xD;&#xA;                  &lt;/xs:simpleType&gt;&#xD;&#xA;                &lt;/xs:element&gt;&#xD;&#xA;                &lt;xs:element name=&quot;CVLink_col&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xD;&#xA;                  &lt;xs:simpleType&gt;&#xD;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xD;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xD;&#xA;                    &lt;/xs:restriction&gt;&#xD;&#xA;                  &lt;/xs:simpleType&gt;&#xD;&#xA;                &lt;/xs:element&gt;&#xD;&#xA;                &lt;xs:element name=&quot;matchCVCount_col&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;matchCVPercentage_col&quot; msdata:Caption=&quot;&quot; type=&quot;xs:double&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;              &lt;/xs:sequence&gt;&#xD;&#xA;            &lt;/xs:complexType&gt;&#xD;&#xA;          &lt;/xs:element&gt;&#xD;&#xA;        &lt;/xs:choice&gt;&#xD;&#xA;      &lt;/xs:complexType&gt;&#xD;&#xA;    &lt;/xs:element&gt;&#xD;&#xA;  &lt;/xs:schema&gt;&#xD;&#xA;&lt;/NewDataSet&gt;" />
-    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each CV" sap:VirtualizedContainerService.HintSize="731.666666666667,2388" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[Directory.GetFiles(AllCVsPath)]">
+    <ui:BuildDataTable DataTable="[out_CVsDT]" DisplayName="Build Data Table - CVsDT" sap:VirtualizedContainerService.HintSize="905.333333333333,59" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xD;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xD;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xD;&#xA;      &lt;xs:complexType&gt;&#xD;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xD;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xD;&#xA;            &lt;xs:complexType&gt;&#xD;&#xA;              &lt;xs:sequence&gt;&#xD;&#xA;                &lt;xs:element name=&quot;matchCVKeywords_col&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xD;&#xA;                  &lt;xs:simpleType&gt;&#xD;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xD;&#xA;                      &lt;xs:maxLength value=&quot;1000&quot; /&gt;&#xD;&#xA;                    &lt;/xs:restriction&gt;&#xD;&#xA;                  &lt;/xs:simpleType&gt;&#xD;&#xA;                &lt;/xs:element&gt;&#xD;&#xA;                &lt;xs:element name=&quot;CVLink_col&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xD;&#xA;                  &lt;xs:simpleType&gt;&#xD;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xD;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xD;&#xA;                    &lt;/xs:restriction&gt;&#xD;&#xA;                  &lt;/xs:simpleType&gt;&#xD;&#xA;                &lt;/xs:element&gt;&#xD;&#xA;                &lt;xs:element name=&quot;matchCVCount_col&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;matchCVPercentage_col&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;              &lt;/xs:sequence&gt;&#xD;&#xA;            &lt;/xs:complexType&gt;&#xD;&#xA;          &lt;/xs:element&gt;&#xD;&#xA;        &lt;/xs:choice&gt;&#xD;&#xA;      &lt;/xs:complexType&gt;&#xD;&#xA;    &lt;/xs:element&gt;&#xD;&#xA;  &lt;/xs:schema&gt;&#xD;&#xA;&lt;/NewDataSet&gt;" />
+    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each CV" sap:VirtualizedContainerService.HintSize="905.333333333333,2558" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[Directory.GetFiles(AllCVsPath)]">
       <ui:ForEach.Body>
         <ActivityAction x:TypeArguments="x:String">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:String" Name="item" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="695.666666666667,2253" sap2010:WorkflowViewState.IdRef="Sequence_4">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="869.333333333333,2423" sap2010:WorkflowViewState.IdRef="Sequence_4">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <Assign sap2010:Annotation.AnnotationText="This is to reassign the file in the directory to a variable. (For each loop)" sap:VirtualizedContainerService.HintSize="653.666666666667,104" sap2010:WorkflowViewState.IdRef="Assign_1">
+            <Assign sap2010:Annotation.AnnotationText="This is to reassign the file in the directory to a variable. (For each loop)" sap:VirtualizedContainerService.HintSize="827.333333333333,104" sap2010:WorkflowViewState.IdRef="Assign_1">
               <Assign.To>
                 <OutArgument x:TypeArguments="si:FileInfo">[file]</OutArgument>
               </Assign.To>
@@ -151,7 +151,7 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </Assign>
-            <Assign sap:VirtualizedContainerService.HintSize="653.666666666667,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+            <Assign sap:VirtualizedContainerService.HintSize="827.333333333333,60" sap2010:WorkflowViewState.IdRef="Assign_2">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:String">[filename]</OutArgument>
               </Assign.To>
@@ -159,7 +159,7 @@
                 <InArgument x:TypeArguments="x:String">[file.name]</InArgument>
               </Assign.Value>
             </Assign>
-            <If Condition="[filename.split(&quot;.&quot;c)(1).equals(&quot;docx&quot;) Or filename.split(&quot;.&quot;c)(1).equals(&quot;doc&quot;)]" DisplayName="If - Checking if the CV is a docx / doc or pdf file" sap:VirtualizedContainerService.HintSize="653.666666666667,52" sap2010:WorkflowViewState.IdRef="If_1">
+            <If Condition="[filename.split(&quot;.&quot;c)(1).equals(&quot;docx&quot;) Or filename.split(&quot;.&quot;c)(1).equals(&quot;doc&quot;)]" DisplayName="If - Checking if the CV is a docx / doc or pdf file" sap:VirtualizedContainerService.HintSize="827.333333333333,52" sap2010:WorkflowViewState.IdRef="If_1">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -193,7 +193,7 @@
                 </If>
               </If.Else>
             </If>
-            <Assign sap:VirtualizedContainerService.HintSize="653.666666666667,60" sap2010:WorkflowViewState.IdRef="Assign_7">
+            <Assign sap:VirtualizedContainerService.HintSize="827.333333333333,60" sap2010:WorkflowViewState.IdRef="Assign_7">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:Int32">[matchCVCount]</OutArgument>
               </Assign.To>
@@ -201,7 +201,7 @@
                 <InArgument x:TypeArguments="x:Int32">0</InArgument>
               </Assign.Value>
             </Assign>
-            <Assign sap:VirtualizedContainerService.HintSize="653.666666666667,60" sap2010:WorkflowViewState.IdRef="Assign_8">
+            <Assign sap:VirtualizedContainerService.HintSize="827.333333333333,60" sap2010:WorkflowViewState.IdRef="Assign_8">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:String">[matchCVKeywords]</OutArgument>
               </Assign.To>
@@ -211,7 +211,7 @@
                 </InArgument>
               </Assign.Value>
             </Assign>
-            <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_KeywordsDT]" DisplayName="For Each Row in Data Table - Looping through each Keyword" sap:VirtualizedContainerService.HintSize="653.666666666667,52" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
+            <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_KeywordsDT]" DisplayName="For Each Row in Data Table - Looping through each Keyword" sap:VirtualizedContainerService.HintSize="827.333333333333,52" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
               <ui:ForEachRow.Body>
                 <ActivityAction x:TypeArguments="sd:DataRow">
                   <ActivityAction.Argument>
@@ -278,7 +278,7 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:ForEachRow>
-            <If Condition="[matchCVKeywords.Equals(&quot;&quot;)]" DisplayName="If - Calculate matchCVPercentage" sap:VirtualizedContainerService.HintSize="653.666666666667,412" sap2010:WorkflowViewState.IdRef="If_6">
+            <If Condition="[matchCVKeywords.Equals(&quot;&quot;)]" DisplayName="If - Calculate matchCVPercentage" sap:VirtualizedContainerService.HintSize="827.333333333333,582" sap2010:WorkflowViewState.IdRef="If_6">
               <If.Then>
                 <Sequence DisplayName="Sequence - No Keywords found" sap:VirtualizedContainerService.HintSize="304.333333333333,252" sap2010:WorkflowViewState.IdRef="Sequence_18">
                   <sap:WorkflowViewStateService.ViewState>
@@ -305,13 +305,13 @@
                 </Sequence>
               </If.Then>
               <If.Else>
-                <Sequence DisplayName="Sequence - At least one Keyword found" sap:VirtualizedContainerService.HintSize="304.333333333333,252" sap2010:WorkflowViewState.IdRef="Sequence_19">
+                <Sequence DisplayName="Sequence - At least one Keyword found" sap:VirtualizedContainerService.HintSize="478,422" sap2010:WorkflowViewState.IdRef="Sequence_19">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <Assign sap:VirtualizedContainerService.HintSize="262.333333333333,60" sap2010:WorkflowViewState.IdRef="Assign_11">
+                  <Assign sap:VirtualizedContainerService.HintSize="436,60" sap2010:WorkflowViewState.IdRef="Assign_11">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:Double">[matchCVPercentage]</OutArgument>
                     </Assign.To>
@@ -319,19 +319,30 @@
                       <InArgument x:TypeArguments="x:Double">[matchCVCount * 100 / in_KeywordsDT.rows.Count]</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <Assign sap:VirtualizedContainerService.HintSize="262.333333333333,60" sap2010:WorkflowViewState.IdRef="Assign_12">
-                    <Assign.To>
-                      <OutArgument x:TypeArguments="x:Double">[matchCVPercentage]</OutArgument>
-                    </Assign.To>
-                    <Assign.Value>
-                      <InArgument x:TypeArguments="x:Double">[math.Round(matchCVPercentage,2)]</InArgument>
-                    </Assign.Value>
-                  </Assign>
+                  <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="436,230" sap2010:WorkflowViewState.IdRef="CommentOut_8">
+                    <ui:CommentOut.Body>
+                      <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="304.333333333333,152" sap2010:WorkflowViewState.IdRef="Sequence_20">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Assign sap:VirtualizedContainerService.HintSize="262.333333333333,60" sap2010:WorkflowViewState.IdRef="Assign_12">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:Double">[matchCVPercentage]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:Double">[math.Round(matchCVPercentage,2)]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                      </Sequence>
+                    </ui:CommentOut.Body>
+                  </ui:CommentOut>
                 </Sequence>
               </If.Else>
             </If>
-            <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{matchCVKeywords.ToString,item,matchCVCount,matchCVPercentage}]" DataTable="[out_CVsDT]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="653.666666666667,22" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
-            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="653.666666666667,570" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+            <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{matchCVKeywords.ToString,item,matchCVCount,matchCVPercentage}]" DataTable="[out_CVsDT]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="827.333333333333,22" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
+            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="827.333333333333,570" sap2010:WorkflowViewState.IdRef="CommentOut_1">
               <ui:CommentOut.Body>
                 <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="552,492" sap2010:WorkflowViewState.IdRef="Sequence_9">
                   <sap:WorkflowViewStateService.ViewState>
@@ -366,7 +377,7 @@
                 </Sequence>
               </ui:CommentOut.Body>
             </ui:CommentOut>
-            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="653.666666666667,409" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="827.333333333333,409" sap2010:WorkflowViewState.IdRef="CommentOut_2">
               <ui:CommentOut.Body>
                 <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="526,331" sap2010:WorkflowViewState.IdRef="Sequence_10">
                   <sap:WorkflowViewStateService.ViewState>
@@ -392,7 +403,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:ForEach>
-    <ui:FilterDataTable DataTable="[out_CVsDT]" DisplayName="Filter Data Table - Filter Zero Matches" FilterRowsMode="Remove" sap:VirtualizedContainerService.HintSize="731.666666666667,59" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[out_CVsDT]" SelectColumnsMode="Keep">
+    <ui:FilterDataTable DataTable="[out_CVsDT]" DisplayName="Filter Data Table - Filter Zero Matches" FilterRowsMode="Remove" sap:VirtualizedContainerService.HintSize="905.333333333333,59" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[out_CVsDT]" SelectColumnsMode="Keep">
       <ui:FilterDataTable.Filters>
         <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
           <ui:FilterOperationArgument BooleanOperator="And" Operator="EQ">
@@ -411,8 +422,8 @@
         </scg:List>
       </ui:FilterDataTable.SelectColumns>
     </ui:FilterDataTable>
-    <ui:SortDataTable ColumnIndex="{x:Null}" DataColumn="{x:Null}" ColumnName="matchCVCount_col" DataTable="[out_CVsDT]" DisplayName="Sort Data Table" sap:VirtualizedContainerService.HintSize="731.666666666667,22" sap2010:WorkflowViewState.IdRef="SortDataTable_1" Order="Decending" OutputDataTable="[out_CVsDT]" SortOrder="Descending" />
-    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope - Write to Output CVs Excel file" sap:VirtualizedContainerService.HintSize="731.666666666667,510.666666666667" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_2" InstanceCachePeriod="3000" WorkbookPath="Output\Output_IT_CVs.xlsx">
+    <ui:SortDataTable ColumnIndex="{x:Null}" DataColumn="{x:Null}" ColumnName="matchCVCount_col" DataTable="[out_CVsDT]" DisplayName="Sort Data Table" sap:VirtualizedContainerService.HintSize="905.333333333333,22" sap2010:WorkflowViewState.IdRef="SortDataTable_1" Order="Decending" OutputDataTable="[out_CVsDT]" SortOrder="Descending" />
+    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope - Write to Output CVs Excel file" sap:VirtualizedContainerService.HintSize="905.333333333333,510.666666666667" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_2" InstanceCachePeriod="3000" WorkbookPath="Output\Output_IT_CVs.xlsx">
       <ui:ExcelApplicationScope.Body>
         <ActivityAction x:TypeArguments="ui:WorkbookApplication">
           <ActivityAction.Argument>
