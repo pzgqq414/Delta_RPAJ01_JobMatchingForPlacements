@@ -1,0 +1,11 @@
+Sub Main()
+
+Range("$A$1").Value = "Job Title" 
+Range("$B$1").Value = "Organisation Name"
+Range("$C$1").Value = "Matched Keyword"
+Range("$D$1").Value = "Matched %" 
+Range("$E$1").Value = "Matched Count"  
+Range("$F$1").Value = "Job URL" 
+Range("$G$1").Value = "Job Title No URL Link"
+
+End Sub

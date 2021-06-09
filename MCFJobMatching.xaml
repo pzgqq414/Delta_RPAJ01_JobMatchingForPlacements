@@ -1,6 +1,6 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="MCFJobMatching" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1146,2929" sap2010:WorkflowViewState.IdRef="MCFJobMatching_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="MCFJobMatching" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1104,9264" sap2010:WorkflowViewState.IdRef="MCFJobMatching_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="52">
+    <scg:List x:TypeArguments="x:String" Capacity="34">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -29,10 +29,16 @@
       <x:String>UiPath.Excel.Activities</x:String>
       <x:String>System.Collections.ObjectModel</x:String>
       <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+      <x:String>System.Text.RegularExpressions</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="20">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="34">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -53,77 +59,127 @@
       <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Word</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>Microsoft.Extensions.DependencyModel</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="MCFJobMatching" sap:VirtualizedContainerService.HintSize="678,2764" sap2010:WorkflowViewState.IdRef="Sequence_16">
+  <Sequence DisplayName="MCFJobMatching" sap:VirtualizedContainerService.HintSize="1114.4,9099.2" sap2010:WorkflowViewState.IdRef="Sequence_16">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Default="[New System.Data.DataTable]" Name="KeywordsDB" />
       <Variable x:TypeArguments="sd:DataTable" Default="[New System.Data.DataTable]" Name="JobsDB" />
-      <Variable x:TypeArguments="x:String" Name="keyMatchedCount" />
+      <Variable x:TypeArguments="x:Int32" Name="keyMatchedCount" />
       <Variable x:TypeArguments="x:Int32" Name="count" />
       <Variable x:TypeArguments="x:String" Name="kValue" />
       <Variable x:TypeArguments="x:String" Name="jValue" />
       <Variable x:TypeArguments="x:String" Name="jValueTest" />
       <Variable x:TypeArguments="x:String" Name="jtValue" />
+      <Variable x:TypeArguments="x:String" Name="count2" />
+      <Variable x:TypeArguments="x:String" Name="jURLValue" />
+      <Variable x:TypeArguments="sd:DataTable" Default="[New System.Data.DataTable]" Name="MatchedDB" />
+      <Variable x:TypeArguments="x:String" Name="matchedKeywords" />
+      <Variable x:TypeArguments="x:Int32" Name="keywordCount" />
+      <Variable x:TypeArguments="x:String" Name="orgValue" />
+      <Variable x:TypeArguments="x:Int32" Name="totalKeywordCount" />
+      <Variable x:TypeArguments="x:Int32" Name="URLCount" />
+      <Variable x:TypeArguments="x:String" Name="matchedURL1" />
+      <Variable x:TypeArguments="x:String" Name="URL1" />
+      <Variable x:TypeArguments="x:String" Name="URL2" />
+      <Variable x:TypeArguments="x:String" Name="matchedURL2" />
+      <Variable x:TypeArguments="x:Int32" Name="deleteRow" />
+      <Variable x:TypeArguments="x:Int32" Name="totalDeleteRow" />
+      <Variable x:TypeArguments="x:Int32" Name="rowNo" />
+      <Variable x:TypeArguments="x:Int32" Name="deleteRowNo" />
+      <Variable x:TypeArguments="x:String" Name="listDeleteRow" />
+      <Variable x:TypeArguments="sd:DataTable" Default="[New System.Data.DataTable]" Name="deleteRowDB" />
+      <Variable x:TypeArguments="sd:DataTable" Name="matchedJobsDB" />
+      <Variable x:TypeArguments="x:String" Name="jobURL" />
+      <Variable x:TypeArguments="x:Int32" Name="linkCount" />
+      <Variable x:TypeArguments="x:String" Name="jobTitle" />
+      <Variable x:TypeArguments="x:String" Name="jobLinkCell" />
+      <Variable x:TypeArguments="x:String" Name="jobTitleCell" />
+      <Variable x:TypeArguments="x:String" Name="jobURLCell" />
+      <Variable x:TypeArguments="sd:DataTable" Name="matchedJobsDBFinal" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:ReadRange AddHeaders="True" DataTable="[KeywordsDB]" DisplayName="Read Range - Extract Job Keywords" sap:VirtualizedContainerService.HintSize="636,87" sap2010:WorkflowViewState.IdRef="ReadRange_4" SheetName="Keywords" WorkbookPath="Data\ConfigurationSettings.xlsx">
+    <ui:ReadRange AddHeaders="True" DataTable="[KeywordsDB]" DisplayName="Read Range - Extract Job Keywords" sap:VirtualizedContainerService.HintSize="1072.8,88" sap2010:WorkflowViewState.IdRef="ReadRange_4" SheetName="Keywords" WorkbookPath="Data\ConfigurationSettings.xlsx">
       <ui:ReadRange.Range>
         <InArgument x:TypeArguments="x:String">
           <Literal x:TypeArguments="x:String" Value="" />
         </InArgument>
       </ui:ReadRange.Range>
     </ui:ReadRange>
-    <ui:ReadRange AddHeaders="True" DataTable="[JobsDB]" DisplayName="Read Range - Extract Job Info" sap:VirtualizedContainerService.HintSize="636,87" sap2010:WorkflowViewState.IdRef="ReadRange_5" SheetName="Sheet1" WorkbookPath="Jobs\MCFJobs.xlsx">
+    <Assign sap:VirtualizedContainerService.HintSize="1072.8,60" sap2010:WorkflowViewState.IdRef="Assign_16">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:Int32">[totalKeywordCount]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:Int32">[KeywordsDB.Rows.Count]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:ReadRange AddHeaders="True" DataTable="[JobsDB]" DisplayName="Read Range - Extract Job Info" sap:VirtualizedContainerService.HintSize="1072.8,88" sap2010:WorkflowViewState.IdRef="ReadRange_5" SheetName="MCF Jobs" WorkbookPath="Jobs\MCFJobs.xlsx">
       <ui:ReadRange.Range>
         <InArgument x:TypeArguments="x:String">
           <Literal x:TypeArguments="x:String" Value="" />
         </InArgument>
       </ui:ReadRange.Range>
     </ui:ReadRange>
-    <Assign DisplayName="Assign - Counter" sap:VirtualizedContainerService.HintSize="636,60" sap2010:WorkflowViewState.IdRef="Assign_7">
+    <Assign DisplayName="Assign - Counter" sap:VirtualizedContainerService.HintSize="1072.8,60" sap2010:WorkflowViewState.IdRef="Assign_7">
       <Assign.To>
         <OutArgument x:TypeArguments="x:Int32">[count]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="x:Int32">1</InArgument>
+        <InArgument x:TypeArguments="x:Int32">2</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[JobsDB]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="636,2318" sap2010:WorkflowViewState.IdRef="ForEachRow_5">
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[JobsDB]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="1072.8,3691.2" sap2010:WorkflowViewState.IdRef="ForEachRow_5">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="sd:DataRow" Name="jobRow" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="602,2198" sap2010:WorkflowViewState.IdRef="Sequence_15">
-            <Sequence.Variables>
-              <Variable x:TypeArguments="x:String" Name="jURLValue" />
-            </Sequence.Variables>
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="600,3570.4" sap2010:WorkflowViewState.IdRef="Sequence_15">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:GetRowItem Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="Job Title" DisplayName="Get Row Item - Job Title" sap:VirtualizedContainerService.HintSize="560,185" sap2010:WorkflowViewState.IdRef="GetRowItem_6" Row="[jobRow]">
+            <ui:GetRowItem Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="Job Title" DisplayName="Get Row Item - Job Title" sap:VirtualizedContainerService.HintSize="558.4,188" sap2010:WorkflowViewState.IdRef="GetRowItem_6" Row="[jobRow]">
               <ui:GetRowItem.Value>
                 <OutArgument x:TypeArguments="x:String">[jtValue]</OutArgument>
               </ui:GetRowItem.Value>
             </ui:GetRowItem>
-            <ui:GetRowItem Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="Job Description" DisplayName="Get Row Item - Job Description" sap:VirtualizedContainerService.HintSize="560,185" sap2010:WorkflowViewState.IdRef="GetRowItem_7" Row="[jobRow]">
+            <ui:GetRowItem Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="Organisation" DisplayName="Get Row Item - Job URL" sap:VirtualizedContainerService.HintSize="558.4,188" sap2010:WorkflowViewState.IdRef="GetRowItem_10" Row="[jobRow]">
               <ui:GetRowItem.Value>
-                <OutArgument x:TypeArguments="x:String">[jValue]</OutArgument>
+                <OutArgument x:TypeArguments="x:String">[orgValue]</OutArgument>
               </ui:GetRowItem.Value>
             </ui:GetRowItem>
-            <ui:GetRowItem Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="Job URL" DisplayName="Get Row Item - Job URL" sap:VirtualizedContainerService.HintSize="560,185" sap2010:WorkflowViewState.IdRef="GetRowItem_8" Row="[jobRow]">
+            <ui:GetRowItem Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="Job URL" DisplayName="Get Row Item - Job URL" sap:VirtualizedContainerService.HintSize="558.4,188" sap2010:WorkflowViewState.IdRef="GetRowItem_8" Row="[jobRow]">
               <ui:GetRowItem.Value>
                 <OutArgument x:TypeArguments="x:String">[jURLValue]</OutArgument>
               </ui:GetRowItem.Value>
             </ui:GetRowItem>
-            <Assign DisplayName="Assign - Extract Job Description" sap:VirtualizedContainerService.HintSize="560,60" sap2010:WorkflowViewState.IdRef="Assign_8">
+            <ui:GetRowItem Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="Job Description" DisplayName="Get Row Item - Job Description" sap:VirtualizedContainerService.HintSize="558.4,188" sap2010:WorkflowViewState.IdRef="GetRowItem_7" Row="[jobRow]">
+              <ui:GetRowItem.Value>
+                <OutArgument x:TypeArguments="x:String">[jValue]</OutArgument>
+              </ui:GetRowItem.Value>
+            </ui:GetRowItem>
+            <Assign DisplayName="Assign - Extract Job Description" sap:VirtualizedContainerService.HintSize="558.4,60" sap2010:WorkflowViewState.IdRef="Assign_8">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:String">[jValueTest]</OutArgument>
               </Assign.To>
@@ -131,47 +187,99 @@
                 <InArgument x:TypeArguments="x:String">[string.Join(",", jValue.ToString)]</InArgument>
               </Assign.Value>
             </Assign>
-            <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[KeywordsDB]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="560,1331" sap2010:WorkflowViewState.IdRef="ForEachRow_4">
+            <Assign sap:VirtualizedContainerService.HintSize="558.4,60" sap2010:WorkflowViewState.IdRef="Assign_11">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[matchedKeywords]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">
+                  <Literal x:TypeArguments="x:String" Value="" />
+                </InArgument>
+              </Assign.Value>
+            </Assign>
+            <Assign sap:VirtualizedContainerService.HintSize="558.4,60" sap2010:WorkflowViewState.IdRef="Assign_13">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:Int32">[keyMatchedCount]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:Int32">0</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[KeywordsDB]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="558.4,2265.6" sap2010:WorkflowViewState.IdRef="ForEachRow_4">
               <ui:ForEachRow.Body>
                 <ActivityAction x:TypeArguments="sd:DataRow">
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="sd:DataRow" Name="keyRow" />
                   </ActivityAction.Argument>
-                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="526,1211" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="524.8,2144.8" sap2010:WorkflowViewState.IdRef="Sequence_14">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ui:GetRowItem Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="IT" DisplayName="Get Row Item - Job Keywords" sap:VirtualizedContainerService.HintSize="484,185" sap2010:WorkflowViewState.IdRef="GetRowItem_9" Row="[keyRow]">
+                    <ui:GetRowItem Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="IT" DisplayName="Get Row Item - Job Keywords" sap:VirtualizedContainerService.HintSize="483.2,188" sap2010:WorkflowViewState.IdRef="GetRowItem_9" Row="[keyRow]">
                       <ui:GetRowItem.Value>
                         <OutArgument x:TypeArguments="x:String">[kValue]</OutArgument>
                       </ui:GetRowItem.Value>
                     </ui:GetRowItem>
-                    <If Condition="[jValueTest.Contains(kValue) = True]" DisplayName="If - Keywords If Found In Job Description" sap:VirtualizedContainerService.HintSize="484,894" sap2010:WorkflowViewState.IdRef="If_3">
+                    <If Condition="[jValueTest.Contains(kValue) = True]" DisplayName="If - Keywords If Found In Job Description" sap:VirtualizedContainerService.HintSize="483.2,1824" sap2010:WorkflowViewState.IdRef="If_3">
                       <If.Then>
-                        <Sequence DisplayName="Write To Excel" sap:VirtualizedContainerService.HintSize="376,717" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                        <Sequence DisplayName="Write To Excel" sap:VirtualizedContainerService.HintSize="375.2,1644.8" sap2010:WorkflowViewState.IdRef="Sequence_13">
                           <Sequence.Variables>
-                            <Variable x:TypeArguments="sd:DataTable" Default="[New System.Data.DataTable]" Name="MatchedDB" />
-                            <Variable x:TypeArguments="x:String" Name="bCell" />
+                            <Variable x:TypeArguments="x:Int32" Name="matchedPercent" />
+                            <Variable x:TypeArguments="x:String" Name="matchedPercentString" />
                           </Sequence.Variables>
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <ui:WriteCell Cell="[&quot;A&quot;+count.ToString]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="334,115" sap2010:WorkflowViewState.IdRef="WriteCell_6" SheetName="Matched Jobs" Text="[kValue]" WorkbookPath="Jobs\MCFMatch.xlsx" />
-                          <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_9">
+                          <Assign sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_12">
                             <Assign.To>
-                              <OutArgument x:TypeArguments="x:String">[bCell]</OutArgument>
+                              <OutArgument x:TypeArguments="x:String">[matchedKeywords]</OutArgument>
                             </Assign.To>
                             <Assign.Value>
-                              <InArgument x:TypeArguments="x:String">["B"+count.ToString]</InArgument>
+                              <InArgument x:TypeArguments="x:String">[matchedKeywords + "," + kValue]</InArgument>
                             </Assign.Value>
                           </Assign>
-                          <ui:WriteCell Cell="[bCell]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="334,115" sap2010:WorkflowViewState.IdRef="WriteCell_7" SheetName="Matched Jobs" Text="[jtValue]" WorkbookPath="Jobs\MCFMatch.xlsx" />
-                          <ui:WriteCell Cell="[&quot;C&quot;+count.ToString]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="334,115" sap2010:WorkflowViewState.IdRef="WriteCell_8" SheetName="Matched Jobs" Text="[&quot;https://www.mycareersfuture.gov.sg&quot;+jURLValue]" WorkbookPath="Jobs\MCFMatch.xlsx" />
-                          <Assign DisplayName="Assign - Increase Counter" sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_10">
+                          <Assign sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_14">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:Int32">[keyMatchedCount]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:Int32">[keyMatchedCount + 1]</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                          <Assign sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_17">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:Int32">[matchedPercent]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:Int32">[CInt(keyMatchedCount *100/totalKeywordCount)]</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                          <Assign sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_18">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:String">[matchedPercentString]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:String">[matchedPercent.ToString]</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                          <ui:WriteCell Cell="[&quot;A&quot;+count.ToString]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="333.6,116" sap2010:WorkflowViewState.IdRef="WriteCell_17" SheetName="Matched Jobs" WorkbookPath="Jobs\MCFMatch.xlsx">
+                            <ui:WriteCell.Text>
+                              <InArgument x:TypeArguments="x:String">
+                                <Literal x:TypeArguments="x:String" Value="" />
+                              </InArgument>
+                            </ui:WriteCell.Text>
+                          </ui:WriteCell>
+                          <ui:WriteCell Cell="[&quot;B&quot;+count.ToString]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="333.6,116" sap2010:WorkflowViewState.IdRef="WriteCell_14" SheetName="Matched Jobs" Text="[orgValue]" WorkbookPath="Jobs\MCFMatch.xlsx" />
+                          <ui:WriteCell Cell="[&quot;C&quot;+count.ToString]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="333.6,116" sap2010:WorkflowViewState.IdRef="WriteCell_6" SheetName="Matched Jobs" Text="[matchedKeywords.TrimStart(&quot;,&quot;c)]" WorkbookPath="Jobs\MCFMatch.xlsx" />
+                          <ui:WriteCell Cell="[&quot;D&quot;+count.ToString]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="333.6,116" sap2010:WorkflowViewState.IdRef="WriteCell_15" SheetName="Matched Jobs" Text="[matchedPercentString]" WorkbookPath="Jobs\MCFMatch.xlsx" />
+                          <ui:WriteCell Cell="[&quot;E&quot;+count.ToString]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="333.6,116" sap2010:WorkflowViewState.IdRef="WriteCell_12" SheetName="Matched Jobs" Text="[keyMatchedCount.ToString]" WorkbookPath="Jobs\MCFMatch.xlsx" />
+                          <ui:WriteCell Cell="[&quot;F&quot;+count.ToString]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="333.6,116" sap2010:WorkflowViewState.IdRef="WriteCell_8" SheetName="Matched Jobs" Text="[&quot;https://www.mycareersfuture.gov.sg&quot;+jURLValue]" WorkbookPath="Jobs\MCFMatch.xlsx" />
+                          <ui:WriteCell Cell="[&quot;G&quot;+count.ToString]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="333.6,116" sap2010:WorkflowViewState.IdRef="WriteCell_16" SheetName="Matched Jobs" Text="[jtValue]" WorkbookPath="Jobs\MCFMatch.xlsx" />
+                          <Assign DisplayName="Assign - Increase Counter" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_10">
                             <Assign.To>
                               <OutArgument x:TypeArguments="x:Int32">[count]</OutArgument>
                             </Assign.To>
@@ -190,5 +298,308 @@
         </ActivityAction>
       </ui:ForEachRow.Body>
     </ui:ForEachRow>
+    <ui:ReadRange AddHeaders="True" DataTable="[MatchedDB]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="1072.8,88" sap2010:WorkflowViewState.IdRef="ReadRange_6" SheetName="Matched Jobs" WorkbookPath="Jobs\MCFMatch.xlsx">
+      <ui:ReadRange.Range>
+        <InArgument x:TypeArguments="x:String">
+          <Literal x:TypeArguments="x:String" Value="" />
+        </InArgument>
+      </ui:ReadRange.Range>
+    </ui:ReadRange>
+    <Assign sap:VirtualizedContainerService.HintSize="1072.8,60" sap2010:WorkflowViewState.IdRef="Assign_24">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:Int32">[URLCount]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:Int32">2</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[MatchedDB]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="1072.8,1889.6" sap2010:WorkflowViewState.IdRef="ForEachRow_8">
+      <ui:ForEachRow.Body>
+        <ActivityAction x:TypeArguments="sd:DataRow">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="sd:DataRow" Name="matchedRow" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="1039.2,1768.8" sap2010:WorkflowViewState.IdRef="Sequence_54">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Assign sap:VirtualizedContainerService.HintSize="997.6,60" sap2010:WorkflowViewState.IdRef="Assign_20">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[matchedURL1]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">["F"+URLCount.ToString]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Assign sap:VirtualizedContainerService.HintSize="997.6,60" sap2010:WorkflowViewState.IdRef="Assign_21">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[matchedURL2]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">["F"+(URLCount+1).ToString]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:ReadCell Cell="[matchedURL2]" DisplayName="Read Cell" sap:VirtualizedContainerService.HintSize="997.6,88" sap2010:WorkflowViewState.IdRef="ReadCell_4" SheetName="Matched Jobs" WorkbookPath="Jobs\MCFMatch.xlsx">
+              <ui:ReadCell.Result>
+                <OutArgument x:TypeArguments="x:String">[URL1]</OutArgument>
+              </ui:ReadCell.Result>
+            </ui:ReadCell>
+            <ui:ReadCell Cell="[matchedURL1]" DisplayName="Read Cell" sap:VirtualizedContainerService.HintSize="997.6,88" sap2010:WorkflowViewState.IdRef="ReadCell_3" SheetName="Matched Jobs" WorkbookPath="Jobs\MCFMatch.xlsx">
+              <ui:ReadCell.Result>
+                <OutArgument x:TypeArguments="x:String">[URL2]</OutArgument>
+              </ui:ReadCell.Result>
+            </ui:ReadCell>
+            <If Condition="[URL1 = URL2]" sap:VirtualizedContainerService.HintSize="997.6,1220" sap2010:WorkflowViewState.IdRef="If_5">
+              <If.Then>
+                <Sequence sap:VirtualizedContainerService.HintSize="476.8,1060.8" sap2010:WorkflowViewState.IdRef="Sequence_53">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="435.2,264" sap2010:WorkflowViewState.IdRef="CommentOut_81">
+                    <ui:CommentOut.Body>
+                      <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="375.2,185.6" sap2010:WorkflowViewState.IdRef="Sequence_131">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[URLCount]" />
+                      </Sequence>
+                    </ui:CommentOut.Body>
+                  </ui:CommentOut>
+                  <Assign sap:VirtualizedContainerService.HintSize="435.2,60" sap2010:WorkflowViewState.IdRef="Assign_28">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Int32">[deleteRow]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:Int32">[URLCount]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <Assign sap:VirtualizedContainerService.HintSize="435.2,60" sap2010:WorkflowViewState.IdRef="Assign_30">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[listDeleteRow]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">[deleteRow.ToString + "," + listDeleteRow]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <Assign sap:VirtualizedContainerService.HintSize="435.2,60" sap2010:WorkflowViewState.IdRef="Assign_35">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[listDeleteRow]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">[listDeleteRow.TrimEnd(","c)]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <Assign sap:VirtualizedContainerService.HintSize="435.2,60" sap2010:WorkflowViewState.IdRef="Assign_26">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Int32">[URLCount]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:Int32">[URLCount + 1]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="435.2,264" sap2010:WorkflowViewState.IdRef="CommentOut_89">
+                    <ui:CommentOut.Body>
+                      <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="375.2,185.6" sap2010:WorkflowViewState.IdRef="Sequence_139">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Info" Message="[listDeleteRow]" />
+                      </Sequence>
+                    </ui:CommentOut.Body>
+                  </ui:CommentOut>
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence sap:VirtualizedContainerService.HintSize="476.8,456.8" sap2010:WorkflowViewState.IdRef="Sequence_59">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="435.2,264" sap2010:WorkflowViewState.IdRef="CommentOut_82">
+                    <ui:CommentOut.Body>
+                      <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="375.2,185.6" sap2010:WorkflowViewState.IdRef="Sequence_132">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[URLCount]" />
+                      </Sequence>
+                    </ui:CommentOut.Body>
+                  </ui:CommentOut>
+                  <Assign sap:VirtualizedContainerService.HintSize="435.2,60" sap2010:WorkflowViewState.IdRef="Assign_29">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Int32">[URLCount]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:Int32">[URLCount + 1]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                </Sequence>
+              </If.Else>
+            </If>
+          </Sequence>
+        </ActivityAction>
+      </ui:ForEachRow.Body>
+    </ui:ForEachRow>
+    <Assign sap:VirtualizedContainerService.HintSize="1072.8,60" sap2010:WorkflowViewState.IdRef="Assign_40">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:Int32">[rowNo]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:Int32">0</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign sap:VirtualizedContainerService.HintSize="1072.8,60" sap2010:WorkflowViewState.IdRef="Assign_41">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:Int32">[totalDeleteRow]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:Int32">[CInt(Split(listDeleteRow,",").Count)]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:InterruptibleWhile DisplayName="While" sap:VirtualizedContainerService.HintSize="1072.8,1061.6" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_4">
+      <ui:InterruptibleWhile.Body>
+        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="476.8,894.4" sap2010:WorkflowViewState.IdRef="Sequence_84">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Assign sap:VirtualizedContainerService.HintSize="435.2,60" sap2010:WorkflowViewState.IdRef="Assign_42">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Int32">[deleteRowNo]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Int32">[CInt(Split(listDeleteRow,",")(rowNo))]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="435.2,264" sap2010:WorkflowViewState.IdRef="CommentOut_115">
+            <ui:CommentOut.Body>
+              <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="375.2,185.6" sap2010:WorkflowViewState.IdRef="Sequence_166">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_17" Level="Info" Message="[deleteRowNo]" />
+              </Sequence>
+            </ui:CommentOut.Body>
+          </ui:CommentOut>
+          <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="435.2,297.6" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_5" InstanceCachePeriod="3000" WorkbookPath="Jobs\MCFMatch.xlsx">
+            <ui:ExcelApplicationScope.Body>
+              <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+                </ActivityAction.Argument>
+                <ui:ExcelInsertDeleteRows DisplayName="Insert/Delete Rows" sap:VirtualizedContainerService.HintSize="283.2,188" sap2010:WorkflowViewState.IdRef="ExcelInsertDeleteRows_6" Mode="Remove" NoRows="1" Position="[deleteRowNo]" SheetName="Matched Jobs" />
+              </ActivityAction>
+            </ui:ExcelApplicationScope.Body>
+          </ui:ExcelApplicationScope>
+          <Assign sap:VirtualizedContainerService.HintSize="435.2,60" sap2010:WorkflowViewState.IdRef="Assign_43">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Int32">[rowNo]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Int32">[rowNo + 1]</InArgument>
+            </Assign.Value>
+          </Assign>
+        </Sequence>
+      </ui:InterruptibleWhile.Body>
+      <ui:InterruptibleWhile.Condition>
+        <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="rowNo &lt;= totalDeleteRow -1" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_5" />
+      </ui:InterruptibleWhile.Condition>
+    </ui:InterruptibleWhile>
+    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="1072.8,1360" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_6" InstanceCachePeriod="3000" WorkbookPath="Jobs\MCFMatch.xlsx">
+      <ui:ExcelApplicationScope.Body>
+        <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450.4,1250.4" sap2010:WorkflowViewState.IdRef="Sequence_91">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:InvokeVBA OutputValue="{x:Null}" CodeFilePath="enhanceExcel1.txt" DisplayName="Invoke VBA" EntryMethodName="Main" sap:VirtualizedContainerService.HintSize="408.8,88" sap2010:WorkflowViewState.IdRef="InvokeVBA_5" />
+            <ui:ExcelReadRange AddHeaders="True" DataTable="[matchedJobsDB]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="408.8,60" sap2010:WorkflowViewState.IdRef="ExcelReadRange_1" SheetName="Matched Jobs">
+              <ui:ExcelReadRange.Range>
+                <InArgument x:TypeArguments="x:String">
+                  <Literal x:TypeArguments="x:String" Value="" />
+                </InArgument>
+              </ui:ExcelReadRange.Range>
+            </ui:ExcelReadRange>
+            <Assign sap:VirtualizedContainerService.HintSize="408.8,60" sap2010:WorkflowViewState.IdRef="Assign_44">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:Int32">[linkCount]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:Int32">2</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[matchedJobsDB]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="408.8,701.6" sap2010:WorkflowViewState.IdRef="ForEachRow_9">
+              <ui:ForEachRow.Body>
+                <ActivityAction x:TypeArguments="sd:DataRow">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="sd:DataRow" Name="jobRow" />
+                  </ActivityAction.Argument>
+                  <Sequence sap:VirtualizedContainerService.HintSize="375.2,580.8" sap2010:WorkflowViewState.IdRef="Sequence_130">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <Assign sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_54">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:String">[jobURLCell]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:String">["F" + linkCount.ToString]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <Assign sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_50">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:String">[jobTitleCell]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:String">["G" + linkCount.ToString]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <Assign sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_51">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:String">[jobLinkCell]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:String">["A" + linkCount.ToString]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <ui:ExcelWriteCell Cell="[jobLinkCell]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_5" SheetName="Matched Jobs" Text="[&quot;=Hyperlink(&quot; + jobURLCell + &quot;,&quot; + jobTitleCell + &quot;)&quot;]" />
+                    <Assign sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_53">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:Int32">[linkCount]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:Int32">[linkCount + 1]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                  </Sequence>
+                </ActivityAction>
+              </ui:ForEachRow.Body>
+            </ui:ForEachRow>
+            <ui:InvokeVBA OutputValue="{x:Null}" CodeFilePath="enhanceExcel2.txt" DisplayName="Invoke VBA" EntryMethodName="Main" sap:VirtualizedContainerService.HintSize="408.8,88" sap2010:WorkflowViewState.IdRef="InvokeVBA_4" />
+          </Sequence>
+        </ActivityAction>
+      </ui:ExcelApplicationScope.Body>
+    </ui:ExcelApplicationScope>
   </Sequence>
 </Activity>
