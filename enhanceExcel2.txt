@@ -1,0 +1,13 @@
+Sub Main()
+
+With Range("D2:D" & Cells(Rows.Count, 1).End(xlUp).Row)
+ .NumberFormat = "General"
+ .Value = .Value
+End With
+
+With Range("E2:E" & Cells(Rows.Count, 1).End(xlUp).Row)
+ .NumberFormat = "General"
+ .Value = .Value
+End With
+
+End Sub
